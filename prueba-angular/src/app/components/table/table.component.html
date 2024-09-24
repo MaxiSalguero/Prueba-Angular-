@@ -1,32 +1,33 @@
 <div class="container mt-4">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col" class="header-style">Estacion</th>
-          <th scope="col" class="header-style">Distancia</th>
-          <th scope="col" class="header-style text-green">Regular</th>
-          <th scope="col" class="header-style text-danger">Premium</th>
-          <th scope="col" class="header-style font-weight-bold text-black">Diesel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let competitor of competitorList">
-          <th scope="row" class="body-style">{{ competitor.name | lowercase}}</th>
-          <td class="body-style-mts">{{ competitor.distance }} mts</td>
-          <td class="body-style">
-            <ng-container *ngIf="isNumber(competitor.regular_selling_price); else noPrice">
-              ${{ competitor.regular_selling_price }}
-            </ng-container>
-            <ng-template #noPrice>N/A</ng-template>
-          </td>
-          <td class="body-style">
-            {{ competitor.premium_selling_price ? (competitor.premium_selling_price | currency) : 'N/A'}}
-          </td>
-          <td class="body-style">
-            {{ competitor.diesel_selling_price ? (competitor.diesel_selling_price | currency) : 'N/A'}}
-          </td>
-          
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="header-style">Estación</th>
+        <th scope="col" class="header-style">Distancia</th>
+        <th scope="col" class="header-style divider"></th> <!-- Celda para la línea divisoria -->
+        <th scope="col" class="header-style text-green">Regular</th>
+        <th scope="col" class="header-style text-danger">Premium</th>
+        <th scope="col" class="header-style font-weight-bold text-black">Diesel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let competitor of competitorList">
+        <th scope="row" class="body-style">{{ competitor.name | lowercase }}</th>
+        <td class="body-style-mts">{{ convertDistance(competitor.distance) }}</td>
+        <td class="divider mr-4"></td>
+        <td class="body-style">
+          <ng-container *ngIf="isNumber(competitor.regular_selling_price); else noPrice">
+            ${{ competitor.regular_selling_price }}
+          </ng-container>
+          <ng-template #noPrice>N/A</ng-template>
+        </td>
+        <td class="body-style">
+          {{ competitor.premium_selling_price ? (competitor.premium_selling_price | currency) : 'N/A' }}
+        </td>
+        <td class="body-style">
+          {{ competitor.diesel_selling_price ? (competitor.diesel_selling_price | currency) : 'N/A' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
