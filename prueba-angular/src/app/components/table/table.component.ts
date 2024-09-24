@@ -18,4 +18,8 @@ export class TableComponent {
     });
   }
 
+  isNumber(value: any): boolean {
+    return typeof value === 'number';
+  }
+
 }

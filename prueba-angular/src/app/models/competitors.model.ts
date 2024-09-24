@@ -6,6 +6,6 @@ export interface ICompetitor {
     location_y: string;
     brand: string;
     regular_selling_price: number | boolean;
-    premium_selling_price: number | boolean;
-    diesel_selling_price: number | boolean;
+    premium_selling_price: number | null;
+    diesel_selling_price: number | null;
   }

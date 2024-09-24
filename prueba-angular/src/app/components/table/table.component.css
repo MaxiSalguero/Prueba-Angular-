@@ -17,3 +17,11 @@
     font-family: Arial, sans-serif;
     text-transform: capitalize;
 }
+
+.body-style-mts{
+    background-color: #f8f9fa;
+    color: #495057;
+    font-size: 1em;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+}

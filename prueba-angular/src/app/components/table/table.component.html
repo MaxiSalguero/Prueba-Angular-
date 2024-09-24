@@ -12,15 +12,18 @@
       <tbody>
         <tr *ngFor="let competitor of competitorList">
           <th scope="row" class="body-style">{{ competitor.name | lowercase}}</th>
-          <td class="body-style">{{ competitor.distance }} mts</td>
+          <td class="body-style-mts">{{ competitor.distance }} mts</td>
           <td class="body-style">
-            {{ competitor.regular_selling_price !== false ? competitor.regular_selling_price : null | currency }}
+            <ng-container *ngIf="isNumber(competitor.regular_selling_price); else noPrice">
+              ${{ competitor.regular_selling_price }}
+            </ng-container>
+            <ng-template #noPrice>N/A</ng-template>
           </td>
           <td class="body-style">
-            {{ competitor.premium_selling_price !== false ? competitor.premium_selling_price : null | currency }}
+            {{ competitor.premium_selling_price ? (competitor.premium_selling_price | currency) : 'N/A'}}
           </td>
           <td class="body-style">
-            {{ competitor.diesel_selling_price !== false ? competitor.diesel_selling_price : null | currency }}
+            {{ competitor.diesel_selling_price ? (competitor.diesel_selling_price | currency) : 'N/A'}}
           </td>
           
         </tr>
